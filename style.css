@@ -28,11 +28,15 @@ body {
   overflow: hidden;
   padding: 30px 0;
   display: flex;
+  background: none;
+  /* /* background-image: url(./images/wallpaper3.png);
+  background-size: cover; */
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
   .wrapper {
-    height: 50rem;
+    height: 45rem;
     width: 25rem;
     border: 10px solid rgb(5, 5, 6);
     border-radius: 40px;
@@ -43,6 +47,7 @@ body {
   flex: 1;
   min-width: 100%;
   transition: all 0.3s;
+  background: none;
 }
 
 .wrapper.show-category .home-screen {
@@ -57,7 +62,17 @@ body {
   transform: translate(-50%, -60%);
 }
 
-.screen-backdrop {
+.screen-background {
+  top: 0%;
+  position: absolute;
+  min-width: 100%;
+  height: 100%;
+  background-image: url(./images/wallpaper3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -3;
+}
+/* .screen-backdrop {
   width: 135%;
   height: 25rem;
   position: absolute;
@@ -66,9 +81,10 @@ body {
   z-index: -1;
   transform: translateX(-50%);
   border-radius: 0 0 50% 50%;
-  background-color: rgb(129, 184, 247);
+  background-color: rgba(49, 54, 59, 0.109);
   transition: all 0.3s;
-}
+  backdrop-filter: blur(5px);
+} */
 
 .head-wrapper {
   padding: 0 30px;
@@ -77,6 +93,13 @@ body {
   width: 2rem;
   cursor: pointer;
   color: rgb(26, 26, 31);
+}
+.menu-btn img {
+  width: 100%;
+  transition: all 0.3s;
+}
+.menu-btn:hover img {
+  transform: scale(1.1);
 }
 
 .welcome {
@@ -154,13 +177,18 @@ body {
   font-size: 0.9rem;
   opacity: 0.6;
 }
-.category .options {
+.category .options-edit {
+  width: 3rem;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s;
 }
 
-.category:hover .options {
+.category .options-edit img {
+  width: 120%;
+}
+
+.category:hover .options-edit {
   opacity: 1;
   visibility: visible;
 }
@@ -178,15 +206,23 @@ body {
   align-items: center;
 }
 
-.category-screen .head-wrapper svg {
+.category-screen .head-wrapper img {
   width: 2rem;
   cursor: pointer;
   color: rgb(26, 26, 31);
+  transition: all 0.3s;
+}
+.category-screen .head-wrapper img:hover {
+  transform: scale(1.1);
+}
+
+.category-screen .head-wrapper .options {
+  rotate: 270deg;
 }
 
 .category-details {
   padding: 0 30px;
-  margin-top: 7rem;
+  margin-top: 7.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -201,14 +237,20 @@ body {
 }
 
 /* tasks */
-.tasks-wrapper {
+.task-wrapper {
   padding: 0 30px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   height: calc(100% - 12rem);
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   overflow: auto;
 }
 
+.no-task {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
 .tasks {
   padding-top: 1rem;
   display: flex;
@@ -309,10 +351,18 @@ body {
   justify-content: center;
   align-items: center;
   transition: all 0.3s;
+  border: none;
+  box-shadow: 2px 2px 6px rgba(26, 26, 31, 0.202);
 }
 .add-task-btn img {
   width: 3.5rem;
   border-radius: 50%;
+}
+
+.add-task-btn.active {
+  z-index: 3;
+  bottom: 20rem;
+  transform: rotate(45deg);
 }
 
 .add-task-btn:hover {
@@ -321,10 +371,15 @@ body {
 
 .add-task {
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
   width: 100%;
   padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+.add-task.active {
+  bottom: 0;
 }
 
 .add-task .heading {
@@ -340,13 +395,82 @@ body {
 .input-group input,
 .input-group label {
   display: block;
-  width: 100;
+  width: 100%;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   border: 1px solid rgb(208, 208, 212);
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
+}
+
+.input-group label {
+  width: max-content;
+  padding: 0 5px;
+  margin-top: 14px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btns button {
+  z-index: 3;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  --webkit-text-stroke: 1px rgba(202, 207, 211, 0.421);
+  text-shadow: 1px 1px 0 rgb(66, 73, 81, 0.421),
+    -1px -1px 0 rgb(66, 73, 81, 0.421), 1px -1px 0 rgb(66, 73, 81, 0.421),
+    -1px 1px 0 rgb(66, 73, 81, 0.421), 1px 1px 0 rgb(66, 73, 81, 0.421);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.btns button.add-btn {
+  background-color: rgb(68, 227, 123);
+}
+.btns button.cancel-btn {
+  background-color: rgb(255, 75, 75);
+}
+
+.add-task-backdrop {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 135%;
+  height: 20rem;
+  border-radius: 50% 50% 0 0;
+  backdrop-filter: blur(10px);
+  background-color: #4442678b;
+}
+
+.black-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.black-backdrop.active {
+  opacity: 1;
+  visibility: visible;
 }

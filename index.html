@@ -7,35 +7,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="wrapper show-category">
+    <div class="wrapper">
+      <div class="screen-background"></div>
       <div class="screen-backdrop"></div>
       <!-- home screen -->
       <div class="screen home-screen">
         <!-- head wrapper -->
         <div class="head-wrapper">
           <div class="menu-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-align-justified"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 6l16 0" />
-              <path d="M4 12l16 0" />
-              <path d="M4 18l12 0" />
-            </svg>
+            <img src="./images/menu.png" alt="" />
           </div>
           <div class="welcome">
             <div class="content">
               <h1>Hello there</h1>
-              <p>Today you have 5 tasks</p>
+              <p>Today you have <span class="total-tasks">2</span> tasks</p>
             </div>
             <div class="img">
               <div class="backdrop"></div>
@@ -55,25 +40,9 @@
                   <p>5 Tasks</p>
                 </div>
               </div>
-              <div class="options">
+              <div class="options-edit">
                 <div class="toggle-btn">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="icon icon-tabler icon-tabler-dots-vertical"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="currentColor"
-                    fill="none"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                    <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                  </svg>
+                  <img src="./images/edit.png" alt="" />
                 </div>
               </div>
             </div>
@@ -85,47 +54,19 @@
       <div class="screen category-screen">
         <div class="head-wrapper">
           <div class="back-btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-chevron-left"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 6l-6 6l6 6" />
-            </svg>
+            <img src="./images/icons8-back-100.png" alt="" />
           </div>
           <div class="options">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-dots-vertical"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-              <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-              <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-            </svg>
+            <img src="./images/dots.png" alt="" />
           </div>
         </div>
         <div class="category-details">
           <img src="./images/personal.png" alt="" id="category-img" />
           <div class="details">
-            <p>8 Tasks</p>
-            <h1>Personal</h1>
+            <p class="category-tasks">
+              <span class="total-tasks">8</span> Tasks
+            </p>
+            <h1 class="category-title">Personal</h1>
           </div>
         </div>
         <div class="tasks-wrapper">
@@ -150,13 +91,25 @@
       <div class="add-task-btn">
         <img src="./images/add.png" alt="" />
       </div>
-
+      <!-- backdrop -->
+      <div class="black-backdrop"></div>
       <!-- add task form -->
       <div class="add-task">
+        <div class="add-task-backdrop"></div>
         <h1 class="heading">Add Task</h1>
         <div class="input-group">
           <label for="task-input">Task</label>
           <input type="text" id="task-input" required />
+        </div>
+        <div class="input-group">
+          <label for="category-select">Category</label>
+          <select name="" id="category-select">
+            <option value="personal">Personal</option>
+          </select>
+        </div>
+        <div class="btns">
+          <button class="cancel-btn">Cancel</button>
+          <button class="add-btn">Add</button>
         </div>
       </div>
     </div>
