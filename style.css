@@ -240,6 +240,113 @@ body {
   width: 2rem;
   height: 2rem;
   border-radius: 5px;
-  border: 3px solid rgba(66, 73, 81, 0.299);
-  padding: 2px;
+  border: 2px solid rgba(66, 73, 81, 0.299);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task .checkmark img {
+  width: 1.5rem;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.task:hover .checkmark img {
+  opacity: 0.7;
+}
+
+.task input:checked ~ .checkmark {
+  border: none;
+}
+.task input:checked ~ .checkmark img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.task input:checked ~ p {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-wrapper .delete {
+  display: flex;
+  align-content: center;
+}
+
+.task-wrapper .delete img {
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.task-wrapper:hover .delete img {
+  visibility: visible;
+  opacity: 0.7;
+}
+
+.task-wrapper .delete:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* add task */
+.add-task-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.add-task-btn img {
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.add-task-btn:hover {
+  transform: scale(1.1);
+}
+
+.add-task {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 30px;
+}
+
+.add-task .heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group label {
+  display: block;
+  width: 100;
+}
+
+.input-group input {
+  width: 100%;
+  border: 1px solid rgb(208, 208, 212);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
 }
